@@ -90,7 +90,16 @@ multiply(4, 3, function(answer){
   If the name does not exist, invoke the callback with false as the argument.
 */
 
-function contains(array,name,callback){}
+function contains(array,name,callback){
+  for (var i = 0; i < array.length; i++) {
+    if (array[i]===name) {
+      callback(true)
+    }
+    else {
+      callback(false)
+    }
+  }
+}
 
 // Do not edit the code below.
 contains(names, 'Colt', function(result){
@@ -111,7 +120,18 @@ contains(names, 'Colt', function(result){
   Remove any duplicate values from the array, and invoke the callback with the modified array as an argument.
 */
 
-//Code Here
+
+function uniq(array,callback){
+for (var i = 0; i < array.length; i++) {
+  for (var j = array.length; j>=i+1; j--) {
+    if(array[i]===array[j]){
+      array.splice(j,1)
+    }
+  }
+}
+return callback(array)
+}
+
 
 // Do not edit the code below.
 uniq(names, function(uniqArr){
@@ -128,7 +148,11 @@ uniq(names, function(uniqArr){
   For each name in the array, invoke the callback and pass in the name and the name's index as arguments.
 */
 
-//Code Here
+function each(array,callback){
+array.forEach(function(element,index){
+  callback(element,index)
+})
+}
 
 // Do not edit the code below.
 each(names, function(item, indice){
